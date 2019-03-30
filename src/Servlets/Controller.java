@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 @WebServlet(name = "Controller")
 public class Controller extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // create HashMap to contain planet names and corresponding class methods
@@ -23,34 +24,36 @@ public class Controller extends HttpServlet {
 
 
         switch (button) {
-            case "Mercury":
+            case "mercury":
                 planetMap.put(button, new Planet());
                 break;
-            case "Venus":
+            case "venus":
                 planetMap.put(button, new Planet());
                 break;
-            case "Mars":
+            case "mars":
                 planetMap.put(button, new Planet());
                 break;
-            case "Earth":
+            case "earth":
                 planetMap.put(button, new Planet());
                 break;
-            case "Jupiter":
+            case "jupiter":
                 planetMap.put(button, new Planet());
                 break;
-            case "Saturn":
+            case "saturn":
                 planetMap.put(button, new Planet());
                 break;
-            case "Uranus":
+            case "uranus":
                 planetMap.put(button, new Planet());
                 break;
-            case "Neptune":
+            case "neptune":
                 planetMap.put(button, new Planet());
                 break;
         }
 
         // retrieve the HashMap entry and call for the method that starts the two threads
         planetMap.get(button).entryPoint(button);
+
+        String description = WikiThread.p;
 
 
     }

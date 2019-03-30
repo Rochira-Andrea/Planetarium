@@ -3,9 +3,11 @@ package Entities;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
+import java.io.IOException;
 
 public class WikiThread implements Runnable {
+
+    public static String p;
 
     Thread thrd;
     String planet;
@@ -15,17 +17,18 @@ public class WikiThread implements Runnable {
         this.planet = planetName;
     }
 
-
     @Override
     public void run() {
 
+        String element = "#"+planet+" + p";
 
-        Document url = Jsoup.parse("https://www.space.com/16080-solar-system-planets.html");
-        Element paragraph = url.selectFirst("h2:contains("+planet+")~p");
-
-        // find out how to convert the element above in a string
-
-
-
+        // Retrieve the related content from the website www.space.com
+        try {
+            Document url = Jsoup.connect("https://www.space.com/16080-solar-system-planets.html").userAgent("Mozilla/66.0").get();
+            p = url.body().select(element).text();
+            System.out.println(p);
+        } catch (IOException e){
+            System.out.println("Unable to retrieve the required content");
+        }
     }
 }
