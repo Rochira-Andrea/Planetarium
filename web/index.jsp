@@ -20,15 +20,15 @@
     </header>
     <main>
       <section>Click on any planet for more details</section>
-      <form action="Servlet" method="post">
-        <button type="submit" class="planet" name="mercury">Mercury</button>
-        <button type="submit" class="planet" name="venus">Venus</button>
-        <button type="submit" class="planet" name="mars">Mars</button>
-        <button type="submit" class="planet" name="earth">Earth</button>
-        <button type="submit" class="planet" name="jupiter">Jupiter</button>
-        <button type="submit" class="planet" name="saturn">Saturn</button>
-        <button type="submit" class="planet" name="uranus" >Uranus</button>
-        <button type="submit" class="planet" name="neptune">Neptune</button>
+      <form action="Controller" method="post">
+        <button type="submit" class="planet" name="planet" value="Mercury">Mercury</button>
+        <button type="submit" class="planet" name="planet" value="Venus">Venus</button>
+        <button type="submit" class="planet" name="planet" value="Mars">Mars</button>
+        <button type="submit" class="planet" name="planet" value="Earth">Earth</button>
+        <button type="submit" class="planet" name="planet" value="Jupiter">Jupiter</button>
+        <button type="submit" class="planet" name="planet" value="Saturn">Saturn</button>
+        <button type="submit" class="planet" name="planet" value="Uranus">Uranus</button>
+        <button type="submit" class="planet" name="planet" value="Neptune">Neptune</button>
       </form>
     </main>
     <footer>
