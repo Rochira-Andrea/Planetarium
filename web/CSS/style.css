@@ -1,0 +1,115 @@
+/*-------------------------------------
+GLOBAL SETTING
+---------------------------------------*/
+* {
+    margin: 0;
+}
+
+div,section {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+body{
+    background-color: #628395;
+}
+
+/*-------------------------------------
+HEADER DEFAULT SETTING
+---------------------------------------*/
+
+header{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 2.5em;
+    color: #dfd5a5;
+    margin: 0.25em 0;
+}
+
+/*-------------------------------------
+BODY ELEMENTS SETTING
+---------------------------------------*/
+
+section {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 1em;
+    background-color: #96897b;
+    color: #dfd5a5;
+}
+
+form{
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.planet{
+    display: block;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 1.4em;
+    padding: 1em;
+    background-color: #dfd5a5;
+    color: #96897b;
+    border-bottom-style: none;
+    border-top: 0.1em solid #628395;
+    cursor: pointer;
+}
+
+.footer{
+    color: #dfd5a5;
+    text-align: center;
+    padding: 1.5em 0;
+    font-size: 1.1em;
+}
+
+p{
+    margin: .75em;
+}
+
+/*-------------------------------------
+MEDIA QUERY
+---------------------------------------*/
+@media (min-width: 37em) {
+
+    h1{
+        font-size: 3em;
+        letter-spacing: 2px;
+    }
+
+    section{
+        font-size: 1.5em;
+        letter-spacing: 2px;
+    }
+
+    .planet{
+        font-size: 1.75em;
+    }
+
+}
+
+@media (min-width: 65em) {
+
+    h1{
+        font-size: 4em;
+        letter-spacing: 2px;
+    }
+
+    section{
+        letter-spacing: 4px;
+    }
+
+    .planet{
+        font-size: 2.25em;
+        letter-spacing: 4px;
+    }
+
+}
+
+
+
+
