@@ -1,6 +1,9 @@
 package Servlets;
 
-import Entities.*;
+import Entities.HiberThread;
+import Entities.Planet;
+import Entities.WikiThread;
+import Hibernate.Sphere;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,7 +56,11 @@ public class Controller extends HttpServlet {
         // retrieve the HashMap entry and call for the method that starts the two threads
         planetMap.get(button).entryPoint(button);
 
+        // retrieve the results returned from the threads
         String description = WikiThread.p;
+
+        Sphere hiberSphere = HiberThread.sphere;
+
 
 
     }
