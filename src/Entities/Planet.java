@@ -26,14 +26,6 @@ public class Planet implements HeavenlyBody {
             }
         });
 
-        // wait until the specified threads end
-        try {
-            hiberTrd.thrd.join();
-            wikiTrd.thrd.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         // gracefully terminate the executor
         ES.shutdown();
     }

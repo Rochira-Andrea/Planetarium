@@ -2,6 +2,7 @@ package Entities;
 
 import Hibernate.Planeter;
 import Hibernate.Sphere;
+import Servlets.Controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +14,6 @@ public class HiberThread implements Runnable {
 
     Thread thrd;
     String planet;
-    public static Sphere sphere;
 
     HiberThread(String threadName, String planetName){
         thrd = new Thread(this, threadName);
@@ -40,8 +40,9 @@ public class HiberThread implements Runnable {
 
             // deserialize the json string into a Sphere object
             ObjectMapper mapper = new ObjectMapper();
-            sphere = mapper.readValue(json, Sphere.class);
-
+            Sphere globe = mapper.readValue(json, Sphere.class);
+            System.out.println(globe.toString());
+            Controller.sphere = globe;
         } catch (IOException e) {
                 e.printStackTrace();
         } finally {

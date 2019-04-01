@@ -1,13 +1,12 @@
 package Entities;
 
 
+import Servlets.Controller;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 public class WikiThread implements Runnable {
-
-    public static String p;
 
     Thread thrd;
     String planet;
@@ -25,8 +24,9 @@ public class WikiThread implements Runnable {
         // Retrieve the related content from the website www.space.com
         try {
             Document url = Jsoup.connect("https://www.space.com/16080-solar-system-planets.html").userAgent("Mozilla/66.0").get();
-            p = url.body().select(element).text();
-            System.out.println(p);
+            String paragraph = url.body().select(element).text();
+            System.out.println(paragraph);
+            Controller.p = paragraph;
         } catch (IOException e){
             System.out.println("Unable to retrieve the required content");
         }
