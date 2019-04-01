@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
-@WebServlet(name = "Controller")
+@WebServlet(name = "Controller", urlPatterns = {"/Controller"})
 public class Controller extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,11 +58,16 @@ public class Controller extends HttpServlet {
 
         // retrieve the results returned from the threads
         String description = WikiThread.p;
-
         Sphere hiberSphere = HiberThread.sphere;
 
-
-
+        // set the parameters to pass to the output.jsp
+        request.setAttribute("name",hiberSphere.getName());
+        request.setAttribute("volume",hiberSphere.getVolume());
+        request.setAttribute("orbitalPeriod",hiberSphere.getOrbitalPeriod());
+        request.setAttribute("knownSatellites",hiberSphere.getSatellite());
+        request.setAttribute("habitable",hiberSphere.getHabitable());
+        request.setAttribute("description",description);
+        request.getRequestDispatcher("output.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

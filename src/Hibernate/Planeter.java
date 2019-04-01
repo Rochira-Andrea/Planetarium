@@ -1,8 +1,10 @@
 package Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-import static javax.persistence.GenerationType.IDENTITY;
 
 
 @Entity
@@ -11,7 +13,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Planeter implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY )
     @Column(name="id")
     private String planetId;
 
@@ -19,6 +20,11 @@ public class Planeter implements Serializable {
     private String planetDetails;
 
     public Planeter() {
+    }
+
+    public Planeter(String planetId, String planetDetails) {
+        this.planetId = planetId;
+        this.planetDetails = planetDetails;
     }
 
     public String getPlanetId() {

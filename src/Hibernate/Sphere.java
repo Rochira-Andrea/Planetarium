@@ -7,14 +7,14 @@ public class Sphere implements Serializable {
     // attributes
     private String name;
     private String volume;
-    private double orbitalPeriod;
-    private int satellite;
+    private String orbitalPeriod;
+    private String satellite;
     private String habitable;
 
     public Sphere() {
     }
 
-    public Sphere(String name, String volume, double orbitalPeriod, int satellite, String habitable) {
+    public Sphere(String name, String volume, String orbitalPeriod, String satellite, String habitable) {
         this.name = name;
         this.volume = volume;
         this.orbitalPeriod = orbitalPeriod;
@@ -23,7 +23,6 @@ public class Sphere implements Serializable {
     }
 
     // getters and setters
-
     public String getName() {
         return name;
     }
@@ -40,19 +39,19 @@ public class Sphere implements Serializable {
         this.volume = volume;
     }
 
-    public double getOrbitalPeriod() {
+    public String getOrbitalPeriod() {
         return orbitalPeriod;
     }
 
-    public void setOrbitalPeriod(double orbitalPeriod) {
+    public void setOrbitalPeriod(String orbitalPeriod) {
         this.orbitalPeriod = orbitalPeriod;
     }
 
-    public int getSatellite() {
+    public String getSatellite() {
         return satellite;
     }
 
-    public void setSatellite(int satellite) {
+    public void setSatellite(String satellite) {
         this.satellite = satellite;
     }
 
