@@ -1,6 +1,8 @@
 package Entities;
 
+import java.util.ArrayList;
+
 public interface HeavenlyBody {
 
-    void entryPoint(String planet);
+    ArrayList<Object> entryPoint(String planet);
 }

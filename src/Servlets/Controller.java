@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @WebServlet(name = "Controller", urlPatterns = {"/Controller"})
@@ -55,13 +56,11 @@ public class Controller extends HttpServlet {
         }
 
         // retrieve the HashMap entry and call for the method that starts the two threads
-        planetMap.get(button).entryPoint(button);
 
-        while (p==null && hiberSphere==null){
-            continue;
-        }
+        ArrayList<Object> myList = planetMap.get(button).entryPoint(button);
 
-
+        hiberSphere = (Sphere)myList.get(0);
+        p = (String) myList.get(1);
 
         // set the parameters to pass to the output.jsp
         request.setAttribute("name", hiberSphere.getName());
@@ -71,8 +70,6 @@ public class Controller extends HttpServlet {
         request.setAttribute("habitable",hiberSphere.getHabitable());
         request.setAttribute("description", p);
         request.getRequestDispatcher("output.jsp").include(request, response);
-
-
     }
 
 

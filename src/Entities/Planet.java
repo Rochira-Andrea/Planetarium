@@ -1,34 +1,69 @@
 package Entities;
 
-import java.util.concurrent.*;
+import Hibernate.Planeter;
+import Hibernate.Sphere;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Planet implements HeavenlyBody {
 
     @Override
-    public void entryPoint(String planet) {
+    public ArrayList<Object> entryPoint(String planet) {
 
-        // create an executor that implements a pool of 2 threads
-        ExecutorService ES = Executors.newFixedThreadPool(2);
+        ArrayList<Object> temp = new ArrayList<>();
 
-        // create two distinct runnable objects
-        HiberThread hiberTrd = new HiberThread("hiberTrd", planet);
-        WikiThread wikiTrd = new WikiThread("wikiTrd", planet);
+        // HIBERNATE BLOCK - INCLUDES JSON
+        // create the session manager
+        SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Planeter.class).buildSessionFactory();
 
-        // pass the Runnable objects to the executor and start running their tasks
-        ES.execute(hiberTrd);
-        ES.execute(wikiTrd);
+        // create a Session object to establish the connection with the database
+        Session session = factory.getCurrentSession();
 
-        // Implement Future & anonimous Callable to check on completion of threads
-        Future<String> future = ES.submit(new Callable<String>() {
-            @Override
-            public String call() {
-                return "Feedback from Callable";
-            }
-        });
+        try {
+            // retrieve back the record related to the selected planet
+            Planeter plan;
+            session.beginTransaction();
+            plan = session.get(Planeter.class,planet);
 
-        // gracefully terminate the executor
-        if (future.isDone()) {
-            ES.shutdown();
+            // extract the json string from the "details" field
+            String json = plan.getPlanetDetails();
+
+            // deserialize the json string into a Sphere object
+            ObjectMapper mapper = new ObjectMapper();
+            Sphere sphere = mapper.readValue(json, Sphere.class);
+
+            temp.add(sphere);
+
+            session.flush();
+            session.clear();
+            session.close();
+            factory.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
+        // HTTPURLCONNECT BLOCK - IMPLEMENTS JSOUP
+        String element = "#"+planet+" + p";
+        String paragraph;
+
+        // Retrieve the related content from the website www.space.com
+        try {
+            Document url = Jsoup.connect("https://www.space.com/16080-solar-system-planets.html").userAgent("Mozilla/66.0").get();
+            paragraph = url.body().select(element).text();
+            temp.add(paragraph);
+        } catch (IOException e){
+            System.out.println("Unable to retrieve the required content");
+        }
+
+        return temp;
     }
 }
