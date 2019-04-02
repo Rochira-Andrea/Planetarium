@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class Controller extends HttpServlet {
 
     public static String p;
-    public static Sphere sphere;
+    public static Sphere hiberSphere;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -57,15 +57,24 @@ public class Controller extends HttpServlet {
         // retrieve the HashMap entry and call for the method that starts the two threads
         planetMap.get(button).entryPoint(button);
 
+        while (p==null && hiberSphere==null){
+            continue;
+        }
+
+
+
         // set the parameters to pass to the output.jsp
-        request.setAttribute("name",sphere.getName());
-        //request.setAttribute("volume",hiberSphere.getVolume());
-        //request.setAttribute("orbitalPeriod",hiberSphere.getOrbitalPeriod());
-        //request.setAttribute("knownSatellites",hiberSphere.getSatellite());
-        //request.setAttribute("habitable",hiberSphere.getHabitable());
-        request.setAttribute("description",p);
-        request.getRequestDispatcher("output.jsp").forward(request, response);
+        request.setAttribute("name", hiberSphere.getName());
+        request.setAttribute("volume",hiberSphere.getVolume());
+        request.setAttribute("orbitalPeriod",hiberSphere.getOrbitalPeriod());
+        request.setAttribute("knownSatellites",hiberSphere.getSatellite());
+        request.setAttribute("habitable",hiberSphere.getHabitable());
+        request.setAttribute("description", p);
+        request.getRequestDispatcher("output.jsp").include(request, response);
+
+
     }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");

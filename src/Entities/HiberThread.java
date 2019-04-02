@@ -40,9 +40,8 @@ public class HiberThread implements Runnable {
 
             // deserialize the json string into a Sphere object
             ObjectMapper mapper = new ObjectMapper();
-            Sphere globe = mapper.readValue(json, Sphere.class);
-            System.out.println(globe.toString());
-            Controller.sphere = globe;
+            Controller.hiberSphere = mapper.readValue(json, Sphere.class);
+
         } catch (IOException e) {
                 e.printStackTrace();
         } finally {

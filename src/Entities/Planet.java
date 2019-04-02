@@ -11,8 +11,8 @@ public class Planet implements HeavenlyBody {
         ExecutorService ES = Executors.newFixedThreadPool(2);
 
         // create two distinct runnable objects
-        HiberThread hiberTrd = new HiberThread("hiberTrd",planet);
-        WikiThread wikiTrd = new WikiThread("wikiTrd",planet);
+        HiberThread hiberTrd = new HiberThread("hiberTrd", planet);
+        WikiThread wikiTrd = new WikiThread("wikiTrd", planet);
 
         // pass the Runnable objects to the executor and start running their tasks
         ES.execute(hiberTrd);
@@ -27,6 +27,8 @@ public class Planet implements HeavenlyBody {
         });
 
         // gracefully terminate the executor
-        ES.shutdown();
+        if (future.isDone()) {
+            ES.shutdown();
+        }
     }
 }

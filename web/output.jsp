@@ -19,7 +19,7 @@
     <h1>${name}</h1>
 </header>
 <main>
-    <div class="details">
+    <div class="list">
         <p>Volume: ${volume}</p>
         <p>Orbital Period: ${orbitalPeriod}</p>
         <p>Known Satellites: ${knownSatellites}</p>
