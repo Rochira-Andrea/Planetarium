@@ -51,11 +51,12 @@ BODY ELEMENTS SETTING
 
 .description p{
     display: block;
-    text-align: center;
+    text-align: justify;
+    line-height: 2;
     letter-spacing: 2px;
     font-size: 1.4em;
     color: #dfd5a5;
-    margin: 1em 0.3em;
+    padding: 1em 2em;
 }
 
 button{
