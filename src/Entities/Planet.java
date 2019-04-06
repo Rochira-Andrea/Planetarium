@@ -8,8 +8,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Entities;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Planet implements HeavenlyBody {
@@ -57,8 +60,15 @@ public class Planet implements HeavenlyBody {
 
         // Retrieve the related content from the website www.space.com
         try {
-            Document url = Jsoup.connect("https://www.space.com/16080-solar-system-planets.html").userAgent("Mozilla/66.0").get();
+            String strUrl = "https://www.space.com/16080-solar-system-planets.html";
+            InputStream inStream = new URL(strUrl).openStream();
+            Document url = Jsoup.parse(inStream,"UTF-8",strUrl);
+            // paragraph = Parser.unescapeEntities(doc.body().select(element).text(),true);
+            // Document url = Jsoup.connect(strUrl).userAgent("Mozilla/66.0").get();
+            url.outputSettings().escapeMode(Entities.EscapeMode.extended);
             paragraph = url.body().select(element).text();
+
+
             temp.add(paragraph);
         } catch (IOException e){
             System.out.println("Unable to retrieve the required content");

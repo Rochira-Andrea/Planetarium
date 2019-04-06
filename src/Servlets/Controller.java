@@ -56,7 +56,6 @@ public class Controller extends HttpServlet {
         }
 
         // retrieve the HashMap entry and call for the method that starts the two threads
-
         ArrayList<Object> myList = planetMap.get(button).entryPoint(button);
 
         hiberSphere = (Sphere)myList.get(0);
