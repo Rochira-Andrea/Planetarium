@@ -19,15 +19,18 @@
     <h1>${name}</h1>
 </header>
 <main>
-    <div class="list">
-        <p>Volume: ${volume}</p>
-        <p>Orbital Period: ${orbitalPeriod}</p>
-        <p>Known Satellites: ${knownSatellites}</p>
-        <p>Habitable: ${habitable}</p>
+    <div class="flex">
+        <div class="list">
+            <p>Volume: ${volume}</p>
+            <p>Orbital Period: ${orbitalPeriod}</p>
+            <p>Known Satellites: ${knownSatellites}</p>
+            <p>Habitable: ${habitable}</p>
+        </div>
+        <img src="<%=request.getAttribute("picPath")%>">
     </div>
     <div class="description">
-        <p>${description}</p>
-        <button type="button"><a style="text-decoration:none" href="index.jsp">Back to main page</a></button>
+        <p>${description} <a href="https://www.space.com/16080-solar-system-planets.html">(Source)</a></p>
+        <button type="button"><a href="index.jsp">Back to main page</a></button>
     </div>
     <br>
 </main>

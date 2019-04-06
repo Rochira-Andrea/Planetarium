@@ -21,6 +21,7 @@ header{
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+    background-color: #d2691e;
 }
 
 h1 {
@@ -49,6 +50,14 @@ BODY ELEMENTS SETTING
     padding: 0.45em 0;
 }
 
+img{
+    width: 250px;
+    vertical-align: middle;
+    border: 0;
+    display: none;
+    margin: auto;
+}
+
 .description p{
     display: block;
     text-align: justify;
@@ -71,6 +80,7 @@ button{
 
 a{
     color: #dfd5a5;
+    text-decoration: none;
 }
 
 .footer{
@@ -84,4 +94,35 @@ a{
 .footer p{
     margin: .75em;
 }
+
+/*-------------------------------------
+MEDIA QUERY
+---------------------------------------*/
+
+@media (min-width: 37em) {
+
+    body{
+        background-color:darkgray;
+    }
+
+    .flex{
+        display: flex;
+        flex-flow: row nowrap;
+
+    }
+
+    .list{
+        flex-basis: 100%;
+    }
+
+    .list p{
+        height: 100%;
+    }
+
+    img{
+        display: block;
+        order:-1;
+    }
+}
+
 
