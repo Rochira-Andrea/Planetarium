@@ -40,6 +40,7 @@ BODY ELEMENTS SETTING
     flex-flow: column nowrap;
 }
 
+
 .list p{
     display: block;
     text-align: center;
@@ -100,10 +101,6 @@ MEDIA QUERY
 ---------------------------------------*/
 
 @media (min-width: 37em) {
-
-    body{
-        background-color:darkgray;
-    }
 
     .flex{
         display: flex;
