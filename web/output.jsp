@@ -26,6 +26,7 @@
             <p>Known Satellites: ${knownSatellites}</p>
             <p>Habitable: ${habitable}</p>
         </div>
+        <%-- the following is a way to dinamically set the path fot the src attribute--%>
         <img src="<%=request.getAttribute("picPath")%>">
     </div>
     <div class="description">

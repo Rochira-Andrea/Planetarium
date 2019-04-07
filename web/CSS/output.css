@@ -31,6 +31,11 @@ h1 {
     margin: 0.35em 0;
 }
 
+a{
+    color: #b22222;
+    text-decoration: none;
+}
+
 /*-------------------------------------
 BODY ELEMENTS SETTING
 ---------------------------------------*/
@@ -39,7 +44,6 @@ BODY ELEMENTS SETTING
     display: flex;
     flex-flow: column nowrap;
 }
-
 
 .list p{
     display: block;
@@ -52,11 +56,8 @@ BODY ELEMENTS SETTING
 }
 
 img{
-    width: 250px;
-    vertical-align: middle;
     border: 0;
     display: none;
-    margin: auto;
 }
 
 .description p{
@@ -79,10 +80,10 @@ button{
     border-radius: 5px;
 }
 
-a{
+button a{
     color: #dfd5a5;
-    text-decoration: none;
 }
+
 
 .footer{
     color: #dfd5a5;
@@ -104,22 +105,20 @@ MEDIA QUERY
 
     .flex{
         display: flex;
-        flex-flow: row nowrap;
-
+        flex-flow: row-reverse;
     }
 
     .list{
-        flex-basis: 100%;
+        flex-grow: 1;
     }
 
     .list p{
-        height: 100%;
+        flex-grow: 1;
     }
 
     img{
+        width: 250px;
+        height: 250px;
         display: block;
-        order:-1;
     }
 }
-
-
