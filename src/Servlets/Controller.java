@@ -57,6 +57,14 @@ public class Controller extends HttpServlet {
 
         // set the path to the planet image
         String picPath = "img/"+button+".jpeg";
+        // set address of wikipedia page related to the planet selected
+        String address;
+        if(button == "mercury") {
+            address ="https://en.wikipedia.org/wiki/"+button+"_(planet)";
+        } else {
+            address ="https://en.wikipedia.org/wiki/"+button;
+        }
+
 
         // retrieve the HashMap entry and call for the method that starts the two threads
         ArrayList<Object> myList = planetMap.get(button).entryPoint(button);
@@ -70,6 +78,7 @@ public class Controller extends HttpServlet {
         request.setAttribute("orbitalPeriod",hiberSphere.getOrbitalPeriod());
         request.setAttribute("knownSatellites",hiberSphere.getSatellite());
         request.setAttribute("habitable",hiberSphere.getHabitable());
+        request.setAttribute("address",address);
         request.setAttribute("picPath",picPath);
         request.setAttribute("description", p);
         request.getRequestDispatcher("output.jsp").include(request, response);

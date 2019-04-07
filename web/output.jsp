@@ -27,7 +27,7 @@
             <p>Habitable: ${habitable}</p>
         </div>
         <%-- the following is a way to dinamically set the path fot the src attribute--%>
-        <img src="<%=request.getAttribute("picPath")%>">
+        <a href="<%=request.getAttribute("address")%>"><img src="<%=request.getAttribute("picPath")%>"></a>
     </div>
     <div class="description">
         <p>${description} <a href="https://www.space.com/16080-solar-system-planets.html">(Source)</a></p>
