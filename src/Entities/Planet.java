@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Entities;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,6 +41,7 @@ public class Planet implements HeavenlyBody {
             ObjectMapper mapper = new ObjectMapper();
             Sphere sphere = mapper.readValue(json, Sphere.class);
 
+            // add the Sphere object to the ArrayList
             temp.add(sphere);
 
             session.flush();
@@ -65,15 +65,17 @@ public class Planet implements HeavenlyBody {
             Document url = Jsoup.parse(inStream,"UTF-8",strUrl);
             // paragraph = Parser.unescapeEntities(doc.body().select(element).text(),true);
             // Document url = Jsoup.connect(strUrl).userAgent("Mozilla/66.0").get();
-            url.outputSettings().escapeMode(Entities.EscapeMode.extended);
+
             paragraph = url.body().select(element).text();
 
-
+            // add the String object to the ArrayList
             temp.add(paragraph);
+
         } catch (IOException e){
             System.out.println("Unable to retrieve the required content");
         }
 
+        // return the ArrayList to the Controller
         return temp;
     }
 }
